@@ -1,1 +1,567 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>College Club Portal - Extracurricular Activities</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #3a0ca3;
+            --secondary: #4361ee;
+            --accent: #f72585;
+            --light: #f8f9fa;
+            --dark: #212529;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f9fafb;
+            color: var(--dark);
+        }
+        
+        .navbar {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+        
+        .hero-section {
+            background: linear-gradient(rgba(58, 12, 163, 0.7), rgba(67, 97, 238, 0.7)), url('https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1200&q=80') no-repeat center center;
+            background-size: cover;
+            padding: 100px 0 150px 0;
+            color: white;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+        }
+        
+        .club-card {
+            transition: transform 0.3s, box-shadow 0.3s;
+            border-radius: 12px;
+            overflow: hidden;
+            border: none;
+            margin-bottom: 20px;
+            height: 100%;
+        }
+        
+        .club-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 20px rgba(0, 0, 0, 0.15);
+        }
+        
+        .club-logo {
+            height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 15px;
+        }
+        
+        .club-logo img {
+            max-height: 100%;
+            max-width: 100%;
+            object-fit: contain;
+        }
+        
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            border: none;
+            border-radius: 50px;
+            padding: 10px 25px;
+        }
+        
+        .btn-primary:hover {
+            background: linear-gradient(135deg, var(--secondary) 0%, var(--primary) 100%);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(58, 12, 163, 0.2);
+        }
+        
+        .section-title {
+            position: relative;
+            padding-bottom: 15px;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+        
+        .section-title:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+            border-radius: 3px;
+        }
+        
+        footer {
+            background: linear-gradient(135deg, var(--dark) 0%, #2c3e50 100%);
+            color: white;
+            padding: 60px 0 30px;
+        }
+        
+        .social-icon {
+            width: 40px;
+            height: 40px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            margin-right: 10px;
+            transition: all 0.3s;
+        }
+        
+        .social-icon:hover {
+            background: var(--primary);
+            transform: translateY(-3px);
+        }
+        
+        /* Club grid layout */
+        .club-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 45px;
+            margin-top: 40px;
+        }
+        
+        .club-item {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
+        }
+        
+        .club-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+        
+        .club-img {
+            height: 400px;
+            overflow: hidden;
+        }
+        
+        .club-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .club-item:hover .club-img img {
+            transform: scale(1.1);
+        }
+        
+        .club-content {
+            padding: 25px;
+        }
+        
+        .club-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 15px;
+        }
+        
+        .club-tag {
+            background: rgba(67, 97, 238, 0.1);
+            color: var(--secondary);
+            padding: 5px 12px;
+            border-radius: 50px;
+            font-size: 0.85rem;
+        }
+        
+        @media (max-width: 768px) {
+            .hero-section {
+                padding: 60px 0 100px 0;
+            }
+            
+            .display-4 {
+                font-size: 2.5rem;
+            }
+            
+            .navbar-nav .btn {
+                margin: 5px 0;
+            }
+            
+            .club-grid {
+                grid-template-columns: 1fr;
+            }
+            .logo{
+            background-image: url("ccoew_logo.jpg");
+            background-size: cover;
+            height: 50px;
+            width: 100px;
+}
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark sticky-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <div class = "logo"></div>
+                <i class="fas fa-users me-2"></i>
+                <img src="ccoew_logo.jpg">
+                
+                            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#clubs">Clubs</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#events">Events</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#about">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contact">Contact</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
 
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="container text-center">
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <h1 class="display-4 fw-bold mb-4"><br>CCOEW STUDENT CLUBS</h1>
+                    <p class="lead mb-5">Explore • Connect • Grow</p>
+                    <div class="d-flex flex-wrap justify-content-center gap-3">
+                       <!--- <a href="#clubs" class="btn btn-primary btn-lg">Explore Clubs</a>--->
+                       <!--- <a href="#events" class="btn btn-outline-light btn-lg">Upcoming Events</a> --->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Clubs Section -->
+    <section id="clubs" class="py-5">
+        <div class="container">
+            <h2 class="text-center section-title">Clubs & Societies</h2>
+            <p class="text-center mb-5">Explore, join, and participate in various college clubs and organizations.<br>
+                 Connect with like-minded students and enhance your college experience.</p>
+            <div class="club-grid">
+                <!-- Technoformers Club -->
+                <div class="club-item">
+                    <div class="club-img">
+                        <img src="technoformer_logo.jpg" alt="Technoformers Club">
+                    </div>
+                    <div class="club-content">
+                        <h3>Technoformers Club</h3>
+                                                                   </div>
+                </div>
+                
+                <!-- Industry 4.0 Technocrats Club -->
+                <div class="club-item">
+                    <div class="club-img">
+                        <img src="https://images.unsplash.com/photo-1603732551681-2e91159b9dc2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" alt="Industry 4.0 Club">
+                    </div>
+                    <div class="club-content">
+                        <h3>Industry 4.0 Technocrats Club</h3>
+                                                                   </div>
+                </div>
+                
+                <!-- IETE Club -->
+                <div class="club-item">
+                    <div class="club-img">
+                        <img src="iete_logo.jpg" alt="IETE Club">
+                    </div>
+                    <div class="club-content">
+                        <h3>IETE Club</h3>
+                                                                   </div>
+                </div>
+                
+                <!-- Material Advantage -->
+                <div class="club-item">
+                    <div class="club-img">
+                        <img src="material_logo.jpg" alt="Material Advantage">
+                    </div>
+                    <div class="club-content">
+                        <h3>Material Advantage Student's Chapter</h3>
+                                                                   </div>
+                </div>
+                
+                <!-- Computer Society of India -->
+                <div class="club-item">
+                    <div class="club-img">
+                        <img src="csi_logo.jpg" alt="CSI Club">
+                    </div>
+                    <div class="club-content">
+                        <h3>Computer Society of India (CSI)</h3>
+                        
+                                           </div>
+                </div>
+                
+                <!-- IEEE Student Branch -->
+                <div class="club-item">
+                    <div class="club-img">
+                        <img src="ieee_logo.jpg" alt="IEEE Club">
+                    </div>
+                    <div class="club-content">
+                        <h3>IEEE Student Branch</h3>
+                                            </div>
+                </div>
+                
+                <!-- Saptswarangi Music Club -->
+                <div class="club-item">
+                    <div class="club-img">
+                        <img src="https://images.unsplash.com/photo-1511735111819-9a3f7709049c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" alt="Music Club">
+                    </div>
+                    <div class="club-content">
+                        <h3>Saptswarangi Music Club</h3>
+                                            </div>
+                </div>
+                
+                             
+                <!-- Society of Women Engineers -->
+                <div class="club-item">
+                    <div class="club-img">
+                        <img src="swe_logo.jpg" alt="SWE">
+                    </div>
+                    <div class="club-content">
+                        <h3>Society of Women Engineers (SWE)</h3>
+                                           </div>
+                </div>
+                
+                <!-- Coders Club -->
+                <div class="club-item">
+                    <div class="club-img">
+                        <img src="coders_logo.jpg" alt="Coders Club">
+                    </div>
+                    <div class="club-content">
+                        <h3>Coders</h3>
+                        <h3>Club</h3>
+
+                                           </div>
+                </div>
+                
+                <!-- UBA -->
+                <div class="club-item">
+                    <div class="club-img">
+                        <img src="uba_logo.jpeg" alt="UBA">
+                    </div>
+                    <div class="club-content">
+                        <h3>UBA (Unnat Bharat Abhiyan)</h3>
+                                           </div>
+                </div>
+                
+                <!-- Robotics and Automation Club -->
+                <div class="club-item">
+                    <div class="club-img">
+                        <img src="https://images.unsplash.com/photo-1581094794329-c8112a89af12?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" alt="Robotics Club">
+                    </div>
+                    <div class="club-content">
+                        <h3>Robotics and Automation Club (RAC)</h3>
+                                           </div>
+                </div>
+                
+                <!-- NSS -->
+                <div class="club-item">
+                    <div class="club-img">
+                        <img src="robotics_logo.jpg" alt="NSS">
+                    </div>
+                    <div class="club-content">
+                        <h3>NSS (National Service Scheme)</h3>
+                                           </div>
+                </div>
+                
+                <!-- Muktangan Club -->
+                <div class="club-item">
+                    <div class="club-img">
+                        <img src="muktangan_logo.jpg" alt="Muktangan Club">
+                    </div>
+                    <div class="club-content">
+                        <h3>Muktangan Club</h3>
+                                           </div>
+                </div>
+                
+                <!-- Green Club -->
+                <div class="club-item">
+                    <div class="club-img">
+                        <img src="https://images.unsplash.com/photo-1532996122724-e3c354a0b15b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" alt="Green Club">
+                    </div>
+                    <div class="club-content">
+                        <h3>Green Club</h3>
+                                          </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Upcoming Events -->
+    <section id="events" class="py-5 bg-light">
+        <div class="container">
+            <h2 class="text-center section-title">Upcoming Events</h2>
+            <p class="text-center mb-5">Stay updated with the latest events and activities happening across all clubs.</p>
+            
+            <div class="row">
+                <div class="col-md-6 mb-4">
+                    <div class="card h-100 border-0 shadow-sm">
+                        <div class="card-header bg-primary text-white">
+                            <h5 class="mb-0">IEEE Hackathon 2025</h5>
+                        </div>
+                        <div class="card-body">
+                            <p class="text-muted"><i class="far fa-calendar me-2"></i>August 25-26, 2025</p>
+                            <p class="text-muted"><i class="fas fa-map-marker-alt me-2"></i>College Innovation Center</p>
+                            <p>Annual 24-hour hackathon focusing on sustainable technology solutions. Open to all students.</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <span class="badge bg-info">120 Participants</span>
+                                <a href="#" class="btn btn-sm btn-outline-primary">Register Now</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 mb-4">
+                    <div class="card h-100 border-0 shadow-sm">
+                        <div class="card-header bg-primary text-white">
+                            <h5 class="mb-0">CSI Coding Competition</h5>
+                        </div>
+                        <div class="card-body">
+                            <p class="text-muted"><i class="far fa-calendar me-2"></i>September 5, 2025</p>
+                            <p class="text-muted"><i class="fas fa-map-marker-alt me-2"></i>Computer Lab 3</p>
+                            <p>Monthly coding competition with problems ranging from beginner to advanced levels.</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <span class="badge bg-info">80 Participants</span>
+                                <a href="#" class="btn btn-sm btn-outline-primary">Register Now</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 mb-4">
+                    <div class="card h-100 border-0 shadow-sm">
+                        <div class="card-header bg-primary text-white">
+                            <h5 class="mb-0">Music Club Annual Concert</h5>
+                        </div>
+                        <div class="card-body">
+                            <p class="text-muted"><i class="far fa-calendar me-2"></i>September 15, 2025</p>
+                            <p class="text-muted"><i class="fas fa-map-marker-alt me-2"></i>College Auditorium</p>
+                            <p>Annual music concert featuring performances from various college bands and solo artists.</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <span class="badge bg-info">200 Participants</span>
+                                <a href="#" class="btn btn-sm btn-outline-primary">Register Now</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 mb-4">
+                    <div class="card h-100 border-0 shadow-sm">
+                        <div class="card-header bg-primary text-white">
+                            <h5 class="mb-0">Robotics Workshop</h5>
+                        </div>
+                        <div class="card-body">
+                            <p class="text-muted"><i class="far fa-calendar me-2"></i>October 2-3, 2025</p>
+                            <p class="text-muted"><i class="fas fa-map-marker-alt me-2"></i>Engineering Block</p>
+                            <p>Hands-on robotics workshop covering basics of robot design, programming and implementation.</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <span class="badge bg-info">50 Participants</span>
+                                <a href="#" class="btn btn-sm btn-outline-primary">Register Now</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center mt-4">
+                           </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-5">
+        <div class="container">
+            <h2 class="text-center section-title">About College Clubs Portal</h2>
+            <div class="row align-items-center">
+                <div class="col-lg-6">
+                    <p class="lead">The College Clubs Portal is the central hub for all extracurricular activities and student organizations at our institution.</p>
+                    <p>We believe that education extends beyond the classroom, and our diverse range of clubs provides students with opportunities to explore their interests, develop new skills, and build lasting connections.</p>
+                    <p>With over 15 active clubs spanning technology, arts, culture, and social service, there's something for everyone. Our portal makes it easy to discover, join, and participate in club activities.</p>
+                    <div class="d-flex mt-4">
+                        <div class="me-4 text-center">
+                            <h3 class="text-primary">15+</h3>
+                            <p>Active Clubs</p>
+                        </div>
+                        <div class="me-4 text-center">
+                            <h3 class="text-primary">500+</h3>
+                            <p>Student Members</p>
+                        </div>
+                        <div class="text-center">
+                            <h3 class="text-primary">30+</h3>
+                            <p>Events Yearly</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <img src="https://images.unsplash.com/photo-1523580494863-6f3031224c94?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" alt="About College Clubs" class="img-fluid rounded shadow">
+                </div>
+            </div>
+        </div>
+    </section>
+
+   
+
+    <!-- Footer -->
+    <footer id="contact">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 mb-4">
+                    <h5>College Clubs Portal</h5>
+                    <p>A centralized platform for all college extracurricular activities, clubs, and organizations.</p>
+                    <div class="mt-3">
+                        <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                <div class="col-md-2 mb-4">
+                    <h5>Quick Links</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="#" class="text-white text-decoration-none">Home</a></li>
+                        <li><a href="#clubs" class="text-white text-decoration-none">Clubs</a></li>
+                        <li><a href="#events" class="text-white text-decoration-none">Events</a></li>
+                        <li><a href="#about" class="text-white text-decoration-none">About</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-2 mb-4">
+                    <h5>Clubs</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="#" class="text-white text-decoration-none">IEEE</a></li>
+                        <li><a href="#" class="text-white text-decoration-none">CSI</a></li>
+                        <li><a href="#" class="text-white text-decoration-none">Music Club</a></li>
+                        <li><a href="#" class="text-white text-decoration-none">More...</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <h5>Contact Us</h5>
+                    <ul class="list-unstyled">
+                        <li><i class="fas fa-map-marker-alt me-2"></i> College Campus, City</li>
+                        <li><i class="fas fa-envelope me-2"></i> clubs@college.edu</li>
+                        <li><i class="fas fa-phone me-2"></i> (123) 456-7890</li>
+                    </ul>
+                </div>
+            </div>
+            <hr class="mt-0 mb-4">
+            <div class="text-center">
+                <p class="mb-0">© 2025 College Clubs Portal. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
