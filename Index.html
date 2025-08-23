@@ -22,12 +22,73 @@
         }
         
         .navbar {
-            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            height: 100px;
+            background: #000000;
+            box-shadow: 0 4px 12px rgba(18, 1, 1, 0.1);
+            padding: 0.5rem 1rem;
+        }
+        
+        .navbar-brand {
+            display: flex;
+            align-items: center;
+            margin-right: 2rem;
+        }        
+        
+        .nav-item {
+            font-family: Arial;
+            font-size: 18px;
+            margin: 0 12px;
+        }
+        .nav-item:hover{
+            border : 1.5px solid white;
+        }
+        
+        .navbar-nav .nav-link {
+            color: white !important;
+            padding: 0.5rem 1rem !important;
+            transition: color 0.3s ease;
+        }
+        
+        .navbar-nav .nav-link:hover {
+            color: red !important;
+        }
+        
+        .navbar-toggler {
+            border-color: rgba(255, 255, 255, 0.5);
+        }
+        
+        .navbar-toggler-icon {
+            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(255, 255, 255, 1)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+        }
+        
+        .search-container {
+            display: flex;
+            align-items: center;
+            margin-right: auto;
+        }
+        
+        .search-form {
+            display: flex;
+            margin-right: 20px;
+        }
+        
+        .search-input {
+            border-radius: 50px 0 0 50px;
+            border: none;
+            padding: 8px 15px;
+            width: 250px;
+        }
+        
+        .search-btn {
+            border-radius: 0 50px 50px 0;
+            border: none;
+            background: white;
+            padding: 8px 15px;
+            cursor: pointer;
         }
         
         .hero-section {
-            background: linear-gradient(rgba(58, 12, 163, 0.7), rgba(67, 97, 238, 0.7)), url('https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1200&q=80') no-repeat center center;
+            background: linear-gradient(rgba(95, 73, 142, 0.7), rgba(81, 89, 123, 0.7)), url('https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1200&q=80') no-repeat center center;
             background-size: cover;
             padding: 100px 0 150px 0;
             color: white;
@@ -117,11 +178,11 @@
             transform: translateY(-3px);
         }
         
-        /* Club grid layout */
+        /* Club grid layout - FIXED */
         .club-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 45px;
+            gap: 150px; /* Changed from 150px to 30px */
             margin-top: 40px;
         }
         
@@ -139,7 +200,7 @@
         }
         
         .club-img {
-            height: 400px;
+            height: 330px;
             overflow: hidden;
         }
         
@@ -173,6 +234,30 @@
             font-size: 0.85rem;
         }
         
+        .hidden {
+            display: none !important;
+        }
+        
+        .no-results {
+            grid-column: 1 / -1;
+            text-align: center;
+            padding: 40px;
+            background: #f8f9fa;
+            border-radius: 12px;
+            margin-top: 20px;
+        }
+        
+        @media (max-width: 992px) {
+            .search-input {
+                width: 180px;
+            }
+            
+            .nav-item {
+                margin: 0 8px;
+                font-size: 16px;
+            }
+        }
+        
         @media (max-width: 768px) {
             .hero-section {
                 padding: 60px 0 100px 0;
@@ -189,12 +274,29 @@
             .club-grid {
                 grid-template-columns: 1fr;
             }
-            .logo{
-            background-image: url("ccoew_logo.jpg");
-            background-size: cover;
-            height: 50px;
-            width: 100px;
-}
+            
+            .search-container {
+                order: 3;
+                width: 100%;
+                margin-top: 15px;
+                margin-right: 0;
+            }
+            
+            .search-form {
+                width: 100%;
+            }
+            
+            .search-input {
+                width: 100%;
+            }
+            
+            .nav-item {
+                margin: 5px 0;
+            }
+            
+            .navbar-nav .nav-link {
+                text-align: center;
+            }
         }
     </style>
 </head>
@@ -203,14 +305,20 @@
     <nav class="navbar navbar-expand-lg navbar-dark sticky-top">
         <div class="container">
             <a class="navbar-brand" href="#">
-                <div class = "logo"></div>
-                <i class="fas fa-users me-2"></i>
-                <img src="ccoew_logo.jpg">
-                
-                            </a>
+                <img src="ccoew_logo.jpg" alt="College Logo" class="me-2" style="height: 70px; width: auto; border-radius: 4px;">
+            </a>
+            
+            <div class="search-container">
+                <form class="search-form" id="searchForm">
+                    <input type="text" class="search-input" placeholder="Search clubs..." id="searchInput">
+                    <button type="submit" class="search-btn"><i class="fas fa-search"></i></button>
+                </form>
+            </div>
+            
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
             </button>
+            
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
@@ -239,11 +347,7 @@
             <div class="row justify-content-center">
                 <div class="col-lg-8">
                     <h1 class="display-4 fw-bold mb-4"><br>CCOEW STUDENT CLUBS</h1>
-                    <p class="lead mb-5">Explore • Connect • Grow</p>
-                    <div class="d-flex flex-wrap justify-content-center gap-3">
-                       <!--- <a href="#clubs" class="btn btn-primary btn-lg">Explore Clubs</a>--->
-                       <!--- <a href="#events" class="btn btn-outline-light btn-lg">Upcoming Events</a> --->
-                    </div>
+                    <p class="lead fw-bold mb-5">Explore • Connect • Grow</p>
                 </div>
             </div>
         </div>
@@ -255,149 +359,176 @@
             <h2 class="text-center section-title">Clubs & Societies</h2>
             <p class="text-center mb-5">Explore, join, and participate in various college clubs and organizations.<br>
                  Connect with like-minded students and enhance your college experience.</p>
-            <div class="club-grid">
-                <!-- Technoformers Club -->
-                <div class="club-item">
+            
+            <div id="searchResults" class="mb-4"></div>
+            
+            <div class="club-grid" id="clubGrid">
+                <!-- Coders Club -->
+                <div class="club-item" data-club-name="coders club">
                     <div class="club-img">
-                        <img src="technoformer_logo.jpg" alt="Technoformers Club">
+                        <a href="codersclub.html">
+                            <img src="coders_logo.jpg" alt="Coders Club">
+                        </a>
                     </div>
                     <div class="club-content">
-                        <h3>Technoformers Club</h3>
-                                                                   </div>
-                </div>
-                
-                <!-- Industry 4.0 Technocrats Club -->
-                <div class="club-item">
-                    <div class="club-img">
-                        <img src="https://images.unsplash.com/photo-1603732551681-2e91159b9dc2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" alt="Industry 4.0 Club">
+                        <h3>Coders Club</h3>
                     </div>
-                    <div class="club-content">
-                        <h3>Industry 4.0 Technocrats Club</h3>
-                                                                   </div>
                 </div>
-                
-                <!-- IETE Club -->
-                <div class="club-item">
-                    <div class="club-img">
-                        <img src="iete_logo.jpg" alt="IETE Club">
-                    </div>
-                    <div class="club-content">
-                        <h3>IETE Club</h3>
-                                                                   </div>
-                </div>
-                
-                <!-- Material Advantage -->
-                <div class="club-item">
-                    <div class="club-img">
-                        <img src="material_logo.jpg" alt="Material Advantage">
-                    </div>
-                    <div class="club-content">
-                        <h3>Material Advantage Student's Chapter</h3>
-                                                                   </div>
-                </div>
-                
-                <!-- Computer Society of India -->
-                <div class="club-item">
-                    <div class="club-img">
-                        <img src="csi_logo.jpg" alt="CSI Club">
-                    </div>
-                    <div class="club-content">
-                        <h3>Computer Society of India (CSI)</h3>
-                        
-                                           </div>
-                </div>
-                
+
                 <!-- IEEE Student Branch -->
-                <div class="club-item">
+                <div class="club-item" data-club-name="ieee">
                     <div class="club-img">
-                        <img src="ieee_logo.jpg" alt="IEEE Club">
+                        <a href="ieee.html">
+                            <img src="ieee_logo.jpg" alt="IEEE Club">
+                        </a>
                     </div>
                     <div class="club-content">
                         <h3>IEEE Student Branch</h3>
-                                            </div>
-                </div>
-                
-                <!-- Saptswarangi Music Club -->
-                <div class="club-item">
-                    <div class="club-img">
-                        <img src="https://images.unsplash.com/photo-1511735111819-9a3f7709049c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" alt="Music Club">
                     </div>
-                    <div class="club-content">
-                        <h3>Saptswarangi Music Club</h3>
-                                            </div>
                 </div>
-                
-                             
-                <!-- Society of Women Engineers -->
-                <div class="club-item">
-                    <div class="club-img">
-                        <img src="swe_logo.jpg" alt="SWE">
-                    </div>
-                    <div class="club-content">
-                        <h3>Society of Women Engineers (SWE)</h3>
-                                           </div>
-                </div>
-                
-                <!-- Coders Club -->
-                <div class="club-item">
-                    <div class="club-img">
-                        <img src="coders_logo.jpg" alt="Coders Club">
-                    </div>
-                    <div class="club-content">
-                        <h3>Coders</h3>
-                        <h3>Club</h3>
 
-                                           </div>
-                </div>
-                
-                <!-- UBA -->
-                <div class="club-item">
-                    <div class="club-img">
-                        <img src="uba_logo.jpeg" alt="UBA">
-                    </div>
-                    <div class="club-content">
-                        <h3>UBA (Unnat Bharat Abhiyan)</h3>
-                                           </div>
-                </div>
-                
-                <!-- Robotics and Automation Club -->
-                <div class="club-item">
-                    <div class="club-img">
-                        <img src="https://images.unsplash.com/photo-1581094794329-c8112a89af12?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" alt="Robotics Club">
-                    </div>
-                    <div class="club-content">
-                        <h3>Robotics and Automation Club (RAC)</h3>
-                                           </div>
-                </div>
-                
                 <!-- NSS -->
-                <div class="club-item">
+                <div class="club-item" data-club-name="nss national service scheme">
                     <div class="club-img">
-                        <img src="robotics_logo.jpg" alt="NSS">
+                        <a href="nss.html">
+                            <img src="nss_logo.jpg" alt="NSS">
+                        </a>
                     </div>
                     <div class="club-content">
                         <h3>NSS (National Service Scheme)</h3>
-                                           </div>
+                    </div>
                 </div>
-                
+
                 <!-- Muktangan Club -->
-                <div class="club-item">
+                <div class="club-item" data-club-name="muktangan club">
                     <div class="club-img">
-                        <img src="muktangan_logo.jpg" alt="Muktangan Club">
+                        <a href="muktangan_club.html">
+                            <img src="muktangan_logo.jpg" alt="Muktangan Club">
+                        </a>
                     </div>
                     <div class="club-content">
                         <h3>Muktangan Club</h3>
-                                           </div>
+                    </div>
+                </div>
+
+                 <!-- UBA -->
+                <div class="club-item" data-club-name="uba unnat bharat abhiyan">
+                    <div class="club-img">
+                        <a href="uba.html">
+                            <img src="uba_logo.jpeg" alt="UBA">
+                        </a>
+                    </div>
+                    <div class="club-content">
+                        <h3>UBA (Unnat Bharat Abhiyan)</h3>
+                    </div>
+                </div>
+
+                <!-- Technoformers Club -->
+                <div class="club-item" data-club-name="technoformers">
+                    <div class="club-img">
+                        <a href="technoformer.html">
+                            <img src="technoformer_logo.jpg" alt="Technoformers Club">
+                        </a>
+                    </div>
+                    <div class="club-content">
+                        <h3>Technoformers Club</h3>                        
+                    </div>
+                </div>
+                
+                <!-- Industry 4.0 Technocrats Club -->
+                <div class="club-item" data-club-name="industry 4.0 technocrats">
+                    <div class="club-img">
+                        <a href="industry_technocrats.html">
+                            <img src="https://images.unsplash.com/photo-1603732551681-2e91159b9dc2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwa90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" alt="Industry 4.0 Club">
+                        </a>
+                    </div>
+                    <div class="club-content">
+                        <h3>Industry 4.0 Technocrats Club</h3>
+                    </div>
+                </div>
+                
+                <!-- IETE Club -->
+                <div class="club-item" data-club-name="iete">
+                    <div class="club-img">
+                        <a href="iete.html">
+                            <img src="iete_logo.jpg" alt="IETE Club">
+                        </a>
+                    </div>
+                    <div class="club-content">
+                        <h3>IETE Club</h3>
+                    </div>
+                </div>
+                
+                <!-- Material Advantage -->
+                <div class="club-item" data-club-name="material advantage">
+                    <div class="club-img">
+                        <a href="materialadvantage.html">
+                            <img src="materialadv_logo.png" alt="material advantage">
+                        </a>
+                    </div>
+                    <div class="club-content">
+                        <h3>Material Advantage Student's Chapter</h3>
+                    </div>
+                </div>
+                
+                <!-- Computer Society of India -->
+                <div class="club-item" data-club-name="computer society of india csi">
+                    <div class="club-img">
+                        <a href="csi.html">
+                            <img src="csi_logo.jpg" alt="CSI Club">
+                        </a>
+                    </div>
+                    <div class="club-content">
+                        <h3>Computer Society of India (CSI)</h3>
+                    </div>
+                </div>
+                
+                <!-- Saptswarangi Music Club -->
+                <div class="club-item" data-club-name="saptswarangi music">
+                    <div class="club-img">
+                        <a href="musicclub.html">
+                            <img src="https://images.unsplash.com/photo-1511735111819-9a3f7709049c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" alt="Music Club">
+                        </a>
+                    </div>
+                    <div class="club-content">
+                        <h3>Saptswarangi Music Club</h3>
+                    </div>
+                </div>
+                
+                <!-- Society of Women Engineers -->
+                <div class="club-item" data-club-name="society of women engineers swe">
+                    <div class="club-img">
+                        <a href="swe.html">
+                            <img src="swe_logo.jpg" alt="SWE">
+                        </a>
+                    </div>
+                    <div class="club-content">
+                        <h3>Society of Women Engineers (SWE)</h3>
+                    </div>
+                </div>
+                
+                <!-- Robotics and Automation Club -->
+                <div class="club-item" data-club-name="robotics and automation club rac">
+                    <div class="club-img">
+                        <a href="robotics.html">
+                            <img src="robotics_logo.jpg" alt="Robotics Club">
+                        </a>
+                    </div>
+                    <div class="club-content">
+                        <h3>Robotics and Automation Club (RAC)</h3>
+                    </div>
                 </div>
                 
                 <!-- Green Club -->
-                <div class="club-item">
+                <div class="club-item" data-club-name="green club">
                     <div class="club-img">
-                        <img src="https://images.unsplash.com/photo-1532996122724-e3c354a0b15b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" alt="Green Club">
+                        <a href="green_club.html">
+                            <img src="https://images.unsplash.com/photo-1532996122724-e3c354a0b15b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" alt="Green Club">
+                        </a>
                     </div>
                     <div class="club-content">
                         <h3>Green Club</h3>
-                                          </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -475,9 +606,6 @@
                     </div>
                 </div>
             </div>
-            
-            <div class="text-center mt-4">
-                           </div>
         </div>
     </section>
 
@@ -511,8 +639,6 @@
             </div>
         </div>
     </section>
-
-   
 
     <!-- Footer -->
     <footer id="contact">
@@ -563,5 +689,75 @@
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const searchForm = document.getElementById('searchForm');
+            const searchInput = document.getElementById('searchInput');
+            const clubItems = document.querySelectorAll('.club-item');
+            const clubGrid = document.getElementById('clubGrid');
+            const searchResults = document.getElementById('searchResults');
+            
+            // Function to filter clubs based on search query
+            function filterClubs(query) {
+                let resultsFound = false;
+                
+                clubItems.forEach(club => {
+                    const clubName = club.getAttribute('data-club-name').toLowerCase();
+                    
+                    if (clubName.includes(query.toLowerCase())) {
+                        club.classList.remove('hidden');
+                        resultsFound = true;
+                    } else {
+                        club.classList.add('hidden');
+                    }
+                });
+                
+                // Show no results message if no clubs match the search
+                if (!resultsFound) {
+                    if (!document.getElementById('noResults')) {
+                        const noResults = document.createElement('div');
+                        noResults.id = 'noResults';
+                        noResults.className = 'no-results';
+                        noResults.innerHTML = `
+                            <i class="fas fa-search fa-3x mb-3 text-muted"></i>
+                            <h4>No clubs found</h4>
+                            <p class="text-muted">Try searching with different keywords</p>
+                        `;
+                        clubGrid.appendChild(noResults);
+                    }
+                } else {
+                    const noResults = document.getElementById('noResults');
+                    if (noResults) {
+                        noResults.remove();
+                    }
+                }
+                
+                // Show search results message
+                if (query.trim() !== '') {
+                    searchResults.innerHTML = `<p class="text-center">Search results for: <strong>"${query}"</strong></p>`;
+                } else {
+                    searchResults.innerHTML = '';
+                }
+            }
+            
+            // Handle form submission
+            searchForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                filterClubs(searchInput.value.trim());
+            });
+            
+            // Real-time search as user types
+            searchInput.addEventListener('input', function() {
+                filterClubs(this.value.trim());
+            });
+            
+            // Clear search when clicking on navbar brand/logo
+            document.querySelector('.navbar-brand').addEventListener('click', function() {
+                searchInput.value = '';
+                filterClubs('');
+            });
+        });
+    </script>
 </body>
 </html>
