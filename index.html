@@ -14,13 +14,17 @@
             --light: #f8f9fa;
             --dark: #212529;
         }
-        
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #f9fafb;
-            color: var(--dark);
-        }
-        
+  background: linear-gradient(-45deg, #1e1e2f, #111122, #2c2c54, #232323);
+  background-size: 400% 400%;
+  animation: gradientDark 10s ease infinite;
+  color: #ddd;
+}
+@keyframes gradientDark {
+  0% {background-position: 0% 50%;}
+  50% {background-position: 100% 50%;}
+  100% {background-position: 0% 50%;}
+} 
         .navbar {
             height: 100px;
             background: #000000;
@@ -88,11 +92,12 @@
         }
         
         .hero-section {
-            background: linear-gradient(rgba(95, 73, 142, 0.7), rgba(81, 89, 123, 0.7)), url('https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1200&q=80') no-repeat center center;
+            background: linear-gradient(rgba(114, 105, 137, 0.7), rgba(84, 94, 135, 0.7)), url('../Webway/Hero_Section/heroimage.jpg') no-repeat center center;
             background-size: cover;
             padding: 100px 0 150px 0;
             color: white;
             text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+            height: 700px;
         }
         
         .club-card {
@@ -305,7 +310,7 @@
     <nav class="navbar navbar-expand-lg navbar-dark sticky-top">
         <div class="container">
             <a class="navbar-brand" href="#">
-                <img src="../Webway-Absolute-tech/Logo/ccoew_logo.jpg" alt="College Logo" class="me-2" style="height: 70px; width: auto; border-radius: 4px;">
+                <img src="../Webway/Logo/ccoew_logo.jpg" alt="College Logo" class="me-2" style="height: 70px; width: auto; border-radius: 4px;">
             </a>
             
             <div class="search-container">
@@ -346,7 +351,7 @@
         <div class="container text-center">
             <div class="row justify-content-center">
                 <div class="col-lg-8">
-                    <h1 class="display-4 fw-bold mb-4"><br>CCOEW STUDENT CLUBS</h1>
+                    <h1 class="display-4 fw-bold mb-4"><br><br><br>CCOEW STUDENT CLUBS</h1>
                     <p class="lead fw-bold mb-5">Explore • Connect • Grow</p>
                 </div>
             </div>
@@ -366,8 +371,8 @@
                 <!-- Coders Club -->
                 <div class="club-item" data-club-name="coders club">
                     <div class="club-img">
-                        <a href="../Webway-Absolute-tech/Clubs/codersclub.html">
-                            <img src="../Webway-Absolute-tech/Logo/codersclub_logo.jpg" alt="Coders Club">
+                        <a href="../Webway/Clubs/codersclub.html">
+                            <img src="../Webway/Logo/codersclub_logo.jpg" alt="Coders Club">
                         </a>
                     </div>
                     <div class="club-content">
@@ -378,8 +383,8 @@
                 <!-- IEEE Student Branch -->
                 <div class="club-item" data-club-name="ieee">
                     <div class="club-img">
-                        <a href="../Webway-Absolute-tech/Clubs/ieee.html">
-                            <img src="../Webway-Absolute-tech/Logo/ieee_logo.jpg" alt="IEEE Club">
+                        <a href="../Webway/Clubs/ieee.html">
+                            <img src="../Webway/Logo/ieee_logo.jpg" alt="IEEE Club">
                         </a>
                     </div>
                     <div class="club-content">
@@ -390,8 +395,8 @@
                 <!-- NSS -->
                 <div class="club-item" data-club-name="nss national service scheme">
                     <div class="club-img">
-                        <a href="../Webway-Absolute-tech/Clubs/nss.html">
-                            <img src="../Webway-Absolute-tech/Logo/nss_logo.jpg" alt="NSS">
+                        <a href="../Webway/Clubs/nss.html">
+                            <img src="../Webway/Logo/nss_logo.jpg" alt="NSS">
                         </a>
                     </div>
                     <div class="club-content">
@@ -402,8 +407,8 @@
                 <!-- Muktangan Club -->
                 <div class="club-item" data-club-name="muktangan club">
                     <div class="club-img">
-                        <a href="../Webway-Absolute-tech/Clubs/muktangan.html">
-                            <img src="../Webway-Absolute-tech/Logo/muktangan_logo.jpg" alt="Muktangan Club">
+                        <a href="../Webway/Clubs/muktangan.html">
+                            <img src="../Webway/Logo/muktangan_logo.jpg" alt="Muktangan Club">
                         </a>
                     </div>
                     <div class="club-content">
@@ -414,8 +419,8 @@
                  <!-- UBA -->
                 <div class="club-item" data-club-name="uba unnat bharat abhiyan">
                     <div class="club-img">
-                        <a href="../Webway-Absolute-tech/Clubs/uba.html">
-                            <img src="../Webway-Absolute-tech/Logo/uba_logo.jpeg" alt="UBA">
+                        <a href="../Webway/Clubs/uba.html">
+                            <img src="../Webway/Logo/uba_logo.jpeg" alt="UBA">
                         </a>
                     </div>
                     <div class="club-content">
@@ -426,8 +431,8 @@
                 <!-- Technoformers Club -->
                 <div class="club-item" data-club-name="technoformers">
                     <div class="club-img">
-                        <a href="../Webway-Absolute-tech/Clubs/technoformer.html">
-                            <img src="../Webway-Absolute-tech/Logo/technoformer_logo.jpg" alt="Technoformers Club">
+                        <a href="../Webway/Clubs/technoformer.html">
+                            <img src="../Webway/Logo/technoformer_logo.jpg" alt="Technoformers Club">
                         </a>
                     </div>
                     <div class="club-content">
@@ -438,7 +443,7 @@
                 <!-- Industry 4.0 Technocrats Club -->
                 <div class="club-item" data-club-name="industry 4.0 technocrats">
                     <div class="club-img">
-                        <a href="../Webway-Absolute-tech/Clubs/industry_technocrats.html">
+                        <a href="../Webway/Clubs/industry_technocrats.html">
                             <img src="https://images.unsplash.com/photo-1603732551681-2e91159b9dc2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwa90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" alt="Industry 4.0 Club">
                         </a>
                     </div>
@@ -450,8 +455,8 @@
                 <!-- IETE Club -->
                 <div class="club-item" data-club-name="iete">
                     <div class="club-img">
-                        <a href="../Webway-Absolute-tech/Clubs/iete.html">
-                            <img src="../Webway-Absolute-tech/Logo/iete_logo.jpg" alt="IETE Club">
+                        <a href="../Webway/Clubs/iete.html">
+                            <img src="../Webway/Logo/iete_logo.jpg" alt="IETE Club">
                         </a>
                     </div>
                     <div class="club-content">
@@ -462,8 +467,8 @@
                 <!-- Material Advantage -->
                 <div class="club-item" data-club-name="material advantage">
                     <div class="club-img">
-                        <a href="../Webway-Absolute-tech/Clubs/materialadvantage.html">
-                            <img src="../Webway-Absolute-tech/Logo/material_logo.jpg" alt="material advantage">
+                        <a href="../Webway/Clubs/materialadvantage.html">
+                            <img src="../Webway/Logo/material_logo.jpg" alt="material advantage">
                         </a>
                     </div>
                     <div class="club-content">
@@ -474,8 +479,8 @@
                 <!-- Computer Society of India -->
                 <div class="club-item" data-club-name="computer society of india csi">
                     <div class="club-img">
-                        <a href="../Webway-Absolute-tech/Clubs/csi.html">
-                            <img src="../Webway-Absolute-tech/Logo//csi_logo.jpg" alt="CSI Club">
+                        <a href="../Webway/Clubs/csi.html">
+                            <img src="../Webway/Logo//csi_logo.jpg" alt="CSI Club">
                         </a>
                     </div>
                     <div class="club-content">
@@ -486,7 +491,7 @@
                 <!-- Saptswarangi Music Club -->
                 <div class="club-item" data-club-name="saptswarangi music">
                     <div class="club-img">
-                        <a href="../Webway-Absolute-tech/Clubs/musicclub.html">
+                        <a href="../Webway/Clubs/musicclub.html">
                             <img src="https://images.unsplash.com/photo-1511735111819-9a3f7709049c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" alt="Music Club">
                         </a>
                     </div>
@@ -498,8 +503,8 @@
                 <!-- Society of Women Engineers -->
                 <div class="club-item" data-club-name="society of women engineers swe">
                     <div class="club-img">
-                        <a href="../Webway-Absolute-tech/Clubs/swe.html">
-                            <img src="../Webway-Absolute-tech/Logo/swe_logo.jpg" alt="SWE">
+                        <a href="../Webway/Clubs/swe.html">
+                            <img src="../Webway/Logo/swe_logo.jpg" alt="SWE">
                         </a>
                     </div>
                     <div class="club-content">
@@ -510,8 +515,8 @@
                 <!-- Robotics and Automation Club -->
                 <div class="club-item" data-club-name="robotics and automation club rac">
                     <div class="club-img">
-                        <a href="../Webway-Absolute-tech/Clubs/robotics.html">
-                            <img src="../Webway-Absolute-tech/Logo/robotics_logo.jpg" alt="Robotics Club">
+                        <a href="../Webway/Clubs/robotics.html">
+                            <img src="../Webway/Logo/robotics_logo.jpg" alt="Robotics Club">
                         </a>
                     </div>
                     <div class="club-content">
@@ -522,7 +527,7 @@
                 <!-- Green Club -->
                 <div class="club-item" data-club-name="green club">
                     <div class="club-img">
-                        <a href="../Webway-Absolute-tech/Clubs/green_club.html">
+                        <a href="../Webway/Clubs/green_club.html">
                             <img src="https://images.unsplash.com/photo-1532996122724-e3c354a0b15b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" alt="Green Club">
                         </a>
                     </div>
@@ -612,7 +617,7 @@
     <!-- About Section -->
     <section id="about" class="py-5">
         <div class="container">
-            <h2 class="text-center section-title">About College Clubs Portal</h2>
+            <h2 class="text-center section-title">About CCOEW Nagpur Student Clubs</h2>
             <div class="row align-items-center">
                 <div class="col-lg-6">
                     <p class="lead">The College Clubs Portal is the central hub for all extracurricular activities and student organizations at our institution.</p>
@@ -634,7 +639,7 @@
                     </div>
                 </div>
                 <div class="col-lg-6">
-                    <img src="https://images.unsplash.com/photo-1523580494863-6f3031224c94?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" alt="About College Clubs" class="img-fluid rounded shadow">
+                    <img src="../Webway/Hero_Section/heroimage.jpg" alt="About College Clubs" class="img-fluid rounded shadow">
                 </div>
             </div>
         </div>
@@ -645,7 +650,10 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-4 mb-4">
-                    <h5>College Clubs Portal</h5>
+                    <a>
+                        <img src="../Webway/Logo/cummins.jpg" alt="College Logo" class="me-2" style="height: 70px; width: auto; border-radius: 4px;">
+                    </a>
+                    <h5>CCOEWN Student Clubs</h5>
                     <p>A centralized platform for all college extracurricular activities, clubs, and organizations.</p>
                     <div class="mt-3">
                         <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
@@ -654,7 +662,7 @@
                         <a href="#" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
                     </div>
                 </div>
-                <div class="col-md-2 mb-4">
+                <!--<div class="col-md-2 mb-4">
                     <h5>Quick Links</h5>
                     <ul class="list-unstyled">
                         <li><a href="#" class="text-white text-decoration-none">Home</a></li>
@@ -671,19 +679,19 @@
                         <li><a href="#" class="text-white text-decoration-none">Music Club</a></li>
                         <li><a href="#" class="text-white text-decoration-none">More...</a></li>
                     </ul>
-                </div>
-                <div class="col-md-4 mb-4">
+                </div>-->
+                <div class="col-md-4 mb-4 ms-auto text-left">
                     <h5>Contact Us</h5>
                     <ul class="list-unstyled">
                         <li><i class="fas fa-map-marker-alt me-2"></i> College Campus, City</li>
-                        <li><i class="fas fa-envelope me-2"></i> clubs@college.edu</li>
+                        <li><i class="fas fa-envelope me-2"></i> cumminscolleges@edu.in</li>
                         <li><i class="fas fa-phone me-2"></i> (123) 456-7890</li>
                     </ul>
                 </div>
             </div>
             <hr class="mt-0 mb-4">
             <div class="text-center">
-                <p class="mb-0">© 2025 College Clubs Portal. All rights reserved.</p>
+                <p class="mb-0">© 2025 CCOEW Nagpur Student Clubs.<br> All rights reserved.</p>
             </div>
         </div>
     </footer>
